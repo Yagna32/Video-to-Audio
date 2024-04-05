@@ -16,8 +16,8 @@ def upload(f,fs,channel,access):
     
     try:
         channel.basic_publish(
-            exchange="",
-            routing_key="video",
+            exchange="", # default exchange
+            routing_key="video", #queue name
             body=json.dumps(message),
             properties=pika.BasicProperties(
                 delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE
