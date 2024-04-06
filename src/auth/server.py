@@ -9,8 +9,8 @@ server.config["MYSQL_HOST"] = os.environ.get("MYSQL_HOST")
 server.config["MYSQL_USER"] = os.environ.get("MYSQL_USER")
 server.config["MYSQL_PASSWORD"] = os.environ.get("MYSQL_PASSWORD")
 server.config["MYSQL_DB"] = os.environ.get("MYSQL_DB")
-server.config["MYSQL_PORT"] = os.environ.get("MYSQL_PORT")
-
+server.config["MYSQL_PORT"] = int(os.environ.get("MYSQL_PORT"))
+print("Secret : ",os.environ.get("JWT_SECRET"))
 @server.route("/login",methods=["POST"])
 def login():
     auth = request.authorization
@@ -20,7 +20,7 @@ def login():
     #check db for username and password
     cur = mysql.connection.cursor()
     res = cur.execute(
-        "SELECT email,password FROM user WHERE email=%s",(auth.username)
+        "SELECT email,password FROM user WHERE email=%s",(auth.username,)
     )
     if res > 0:
         user_row = cur.fetchone()
