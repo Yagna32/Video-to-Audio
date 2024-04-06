@@ -42,14 +42,13 @@ def validate():
         return "missing credentials",401
     
     encoded_jwt = encoded_jwt.split(' ')[1]
-
     try:
         decoded = jwt.decode(
             encoded_jwt,
             os.environ.get("JWT_SECRET"),
-            algorithm=["HS256"]
+            algorithms=["HS256"]
         )
-    except:
+    except Exception as e:
         return "not authorized",403
     
     return decoded,200
