@@ -1,5 +1,5 @@
 # Video-to-Audio
-2:39:35
+3:52:00
 
 develop service > write docker file and push on docker hub > write yaml files for container orchestration > deploy on kubernetes cluster 
 
@@ -20,3 +20,6 @@ minikube addons list //check status and list addons
 durability :
  Durable:queue exists even when the container restarts 
  Transient: queue does not exists if container stops 
+
+#Error:
+0. Error in validating JWT
