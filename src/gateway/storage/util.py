@@ -6,7 +6,7 @@ def upload(f,fs,channel,access):
     try:
         fid = fs.put(f)
     except Exception as err:
-        return "internal server error",500
+        return str(err),500
     
     message = {
         "video_fid": str(fid),
@@ -23,6 +23,6 @@ def upload(f,fs,channel,access):
                 delivery_mode=pika.spec.PERSISTENT_DELIVERY_MODE
             ),
         )
-    except:
+    except Exception as e:
         fs.delete(fid)
-        return "internal server error",500
+        return str(e),500
