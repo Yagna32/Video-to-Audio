@@ -22,4 +22,4 @@ durability :
  Transient: queue does not exists if container stops 
 
 #Error:
-0. Error in validating JWT
+0. Converter crashes after video uploads(fixed)
